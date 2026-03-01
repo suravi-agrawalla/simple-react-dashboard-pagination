@@ -17,9 +17,10 @@ import ParenttComponent from "./components/CallBackExample/ParentComponent";
 import UsingCustomHookComponent from "./components/CustomHook/UsingCustomHookComponent";
 import UsingUseFetchForCustomerHook from "./components/CustomHook/UsingUseFetchForCustomHook";
 import UseMemoExample from "./components/useMemo/UseMemoExample";
+import { UserDashBoardComponent } from "./userDashBoardProject/components/UserDashBoardComponent";
 
 function App() {
-  let [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     console.log("compoent mount");
@@ -78,7 +79,9 @@ function App() {
       {/* <UsingCustomHookComponent /> */}
       {/* <UsingUseFetchForCustomerHook /> */}
 
-      <UseMemoExample />
+      {/* <UseMemoExample /> */}
+
+      <UserDashBoardComponent />
     </>
   );
 }
