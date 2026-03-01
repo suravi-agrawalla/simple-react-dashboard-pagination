@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Pagination,
   Paper,
   Table,
@@ -12,6 +13,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useTheme } from "../../../context/ThemeProvider";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/LightMode";
+
 interface user {
   name: string;
   id: number;
@@ -26,6 +31,7 @@ export default function UserTableComponent() {
   const [filterData, setFilterData] = useState<user[]>([]);
   const [page, setPage] = useState(1);
   const itemPerPage = 5;
+  const { dark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,14 +70,45 @@ export default function UserTableComponent() {
         <h1>loading.............</h1>
       ) : (
         <>
+          <Box display="flex" justifyContent="flex-end" mb={2}>
+            <Button
+              variant="contained"
+              onClick={toggleTheme}
+              startIcon={dark ? <LightModeIcon /> : <DarkModeIcon />}
+              sx={{
+                borderRadius: 3,
+                textTransform: "none",
+                backgroundColor: dark ? "#fbc02d" : "#212121",
+                color: dark ? "black" : "white",
+                "&:hover": {
+                  backgroundColor: dark ? "#f9a825" : "#000000",
+                },
+              }}
+            >
+              {dark ? "Light Mode" : "Dark Mode"}
+            </Button>
+          </Box>
           <TextField
             id="search"
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <Box sx={{ padding: 4 }}>
-            <Paper elevation={3} sx={{ borderRadius: 3 }}>
+          <Box
+            sx={{
+              padding: 4,
+              backgroundColor: dark ? "#121212" : "#ffffff",
+              minHeight: "100vh",
+            }}
+          >
+            <Paper
+              elevation={3}
+              sx={{
+                borderRadius: 3,
+                backgroundColor: dark ? "#1e1e1e" : "white",
+                color: dark ? "white" : "black",
+              }}
+            >
               <Box sx={{ padding: 2 }}>
                 <Typography variant="h5" fontWeight={600}>
                   User Dashboard

@@ -18,6 +18,7 @@ import UsingCustomHookComponent from "./components/CustomHook/UsingCustomHookCom
 import UsingUseFetchForCustomerHook from "./components/CustomHook/UsingUseFetchForCustomHook";
 import UseMemoExample from "./components/useMemo/UseMemoExample";
 import { UserDashBoardComponent } from "./userDashBoardProject/components/UserDashBoardComponent";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -81,7 +82,9 @@ function App() {
 
       {/* <UseMemoExample /> */}
 
-      <UserDashBoardComponent />
+      <ThemeProvider>
+        <UserDashBoardComponent />
+      </ThemeProvider>
     </>
   );
 }
